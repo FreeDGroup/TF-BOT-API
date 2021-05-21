@@ -43,10 +43,10 @@ jobs:
       # Step 7
       - name: Create Zipfile archive of Dependencies
         run: |
-          pwd
+          echo $GITHUB_ACTION_PATH
           cd `poetry env info --path`
           cd lib/python3.8/site-packages
-          zip -r9 ../../../../../../api.zip .
+          zip -r9 $GITHUB_ACTION_PATH/api.zip .
 
       # Step 8
       - name: Add App to Zip file
