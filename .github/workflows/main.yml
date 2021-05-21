@@ -2,31 +2,29 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
-
+    branches: [main]
 
 jobs:
-
   continuous-integration:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1      
+      # Step 1
       - uses: actions/checkout@v2
-      
+
       # Step 2
-      - name: Set up Python 
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
           architecture: x64
       # Step 3
       - name: Install Python Virtual ENV
-        uses: Gr1N/setup-poetry@v4  
+        uses: Gr1N/setup-poetry@v4
         env:
           POETRY_VIRTUALENVS_PATH: ./virtualenvs/tf-bot-api
       # Step 4
-      - name:  Setup Virtual env
+      - name: Setup Virtual env
         uses: actions/cache@v2
         id: cache-poetry
         with:
@@ -39,20 +37,21 @@ jobs:
           poetry install
         if: steps.cache-poetry.outputs.cache-hit != 'true'
       # Step 6
-      # - name: Activate venv and Run Test        
+      # - name: Activate venv and Run Test
       #   run: |
       #     poetry run pytest
       # Step 7
       - name: Create Zipfile archive of Dependencies
         run: |
+          pwd
           cd `poetry env info --path`
           cd lib/python3.8/site-packages
           zip -r9 ../../../../../../api.zip .
-      
+
       # Step 8
       - name: Add App to Zip file
         run: zip -g api.zip -r .
-      
+
       # Step 9
       - name: Upload zip file artifact
         uses: actions/upload-artifact@v2
