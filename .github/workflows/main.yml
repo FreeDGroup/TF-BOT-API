@@ -56,7 +56,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: api
-          path: ~/api.zip
+          path: api.zip
   continuous-deployment:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
