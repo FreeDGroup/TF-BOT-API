@@ -35,11 +35,13 @@ jobs:
       - run: poetry --version
       # Step 5
       - name: Activate and Install Depencies into Virtual env
-        run: poetry install && poetry shell
+        run: |
+          poetry install
         if: steps.cache-poetry.outputs.cache-hit != 'true'
       # Step 6
-      - name: Activate venv and Run Test        
-        run: poetry shell # && pytest
+      # - name: Activate venv and Run Test        
+      #   run: |
+      #     poetry run pytest
       # Step 7
       - name: Create Zipfile archive of Dependencies
         run: |
