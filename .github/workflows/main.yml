@@ -35,7 +35,7 @@ jobs:
       - name: Activate and Install Depencies into Virtual env
         run: |
           poetry install --no-dev
-        if: steps.cache-poetry.outputs.cache-hit != 'true'
+        # if: steps.cache-poetry.outputs.cache-hit != 'true'
       # Step 6
       # - name: Activate venv and Run Test
       #   run: |
@@ -60,11 +60,11 @@ jobs:
           path: ~/api.zip
 
       # Step 10
-      # - name: Upload depend zip file artifact
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: dependency
-      #     path: ~/dependency.zip
+      - name: Upload depend zip file artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dependency
+          path: ~/dependency.zip
   continuous-deployment:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
