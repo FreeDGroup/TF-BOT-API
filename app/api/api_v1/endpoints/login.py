@@ -19,7 +19,7 @@ from app.utils import (
 router = APIRouter()
 
 
-@router.get("/", response_model=schemas.Token)
+@router.get("/")
 def index(
     db: Session = Depends(deps.get_db)
 ):
