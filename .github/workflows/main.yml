@@ -22,7 +22,7 @@ jobs:
       - name: Install Python Virtual ENV
         uses: Gr1N/setup-poetry@v4
         env:
-          POETRY_VIRTUALENVS_PATH: ./virtualenvs/tf-bot-api
+          POETRY_VIRTUALENVS_PATH: ./virtualenvs/tf-bot-api1
       # Step 4
       - name: Setup Virtual env
         uses: actions/cache@v2
@@ -35,7 +35,7 @@ jobs:
       - name: Activate and Install Depencies into Virtual env
         run: |
           poetry install --no-dev
-        if: steps.cache-poetry.outputs.cache-hit != 'true'
+        # if: steps.cache-poetry.outputs.cache-hit != 'true'
       # Step 6
       # - name: Activate venv and Run Test
       #   run: |
