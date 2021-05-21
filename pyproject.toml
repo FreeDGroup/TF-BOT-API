@@ -24,6 +24,7 @@ alembic = "^1.4.2"
 sqlalchemy = "^1.4.15"
 pytest = "^5.4.1"
 python-jose = {extras = ["cryptography"], version = "^3.2.0"}
+mangum = "^0.11.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.770"
