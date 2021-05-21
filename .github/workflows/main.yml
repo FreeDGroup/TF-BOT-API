@@ -45,7 +45,7 @@ jobs:
       # Step 7
       - name: Create Zipfile archive of Dependencies
         run: |
-          cd ./virtualenvs/tf-bot-api/lib/python3.8/site-packages
+          cd ~/.cache/pypoetry/virtualenvs/lib/python3.8/site-packages
           zip -r9 ../../../../../api.zip .
       
       # Step 8
