@@ -45,6 +45,8 @@ jobs:
       # Step 7
       - name: Create Zipfile archive of Dependencies
         run: |
+          cd ~/.cache/pypoetry/virtualenvs
+          ls
           cd ~/.cache/pypoetry/virtualenvs/lib/python3.8/site-packages
           zip -r9 ../../../../../api.zip .
       
